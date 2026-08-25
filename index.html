@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本日公開へ。Kairosからのご提案 - まつれん様</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B2D;
+    --navy-soft:#1B2C42;
+    --orange:#FF6B35;
+    --green:#00C896;
+    --bg:#F5F7FA;
+    --ink:#1C2833;
+    --paper:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.num{
+    font-family:'Space Grotesk','Noto Sans JP',sans-serif;
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(255,107,53,0.25), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(0,200,150,0.18), transparent 40%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 60%, #10233a 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding:100px 0 60px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    align-items:center;
+    width:100%;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    letter-spacing:0.15em;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.25);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:28px;
+  }
+  .tag::before{
+    content:"";
+    width:8px;height:8px;border-radius:50%;
+    background:var(--orange);
+    box-shadow:0 0 0 4px rgba(255,107,53,0.25);
+  }
+  .hero h1{
+    font-size:clamp(32px,5vw,54px);
+    font-weight:700;
+    line-height:1.35;
+    letter-spacing:0.01em;
+    margin-bottom:24px;
+  }
+  .hero h1 span{
+    color:var(--orange);
+  }
+  .hero p.lead{
+    font-size:16px;
+    color:rgba(255,255,255,0.78);
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero .from{
+    font-size:13px;
+    letter-spacing:0.08em;
+    color:rgba(255,255,255,0.55);
+  }
+  .hero .from b{ color:#fff; font-weight:700;}
+
+  /* clock visual */
+  .clock-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+  }
+  .clock{
+    position:relative;
+    width:260px;height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #223349 0%, #0d1826 75%);
+    border:2px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 0 10px rgba(255,255,255,0.03), 0 30px 60px rgba(0,0,0,0.5);
+  }
+  .clock::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+    border-radius:50%;
+    border:1px dashed rgba(255,255,255,0.15);
+  }
+  .clock .tick{
+    position:absolute;
+    width:2px;height:12px;
+    background:rgba(255,255,255,0.35);
+    left:50%; top:6px;
+    transform-origin:50% 124px;
+  }
+  .clock .hand{
+    position:absolute;
+    left:50%; top:50%;
+    background:var(--orange);
+    border-radius:4px;
+    transform-origin:0% 100%;
+  }
+  .hand.hour{ width:4px; height:60px; transform:translate(-50%,-100%) rotate(35deg);}
+  .hand.min{ width:3px; height:88px; background:var(--green); transform:translate(-50%,-100%) rotate(160deg);}
+  .clock .pin{
+    position:absolute;
+    left:50%; top:50%;
+    width:12px;height:12px;
+    background:var(--orange);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(255,107,53,0.2);
+  }
+  .clock-label{
+    position:absolute;
+    bottom:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--orange);
+    color:#0F1B2D;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.05em;
+    padding:6px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+    box-shadow:0 8px 20px rgba(255,107,53,0.35);
+  }
+
+  @media(max-width:820px){
+    .hero-grid{ grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{ margin-left:auto; margin-right:auto;}
+    .clock-box{ margin-top:20px;}
+    .clock{ width:200px; height:200px;}
+    .hand.hour{ height:46px;}
+    .hand.min{ height:66px;}
+  }
+
+  /* ===== SECTION COMMON ===== */
+  section{ padding:90px 0; }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.2em;
+    color:var(--orange);
+    font-weight:700;
+    margin-bottom:14px;
+    display:block;
+  }
+  .sec-title{
+    font-size:clamp(24px,3.4vw,36px);
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:20px;
+    letter-spacing:0.01em;
+  }
+  .sec-desc{
+    color:#4B5A6A;
+    max-width:640px;
+    font-size:15px;
+  }
+
+  /* ===== UNDERSTANDING ===== */
+  .understand{
+    background:var(--paper);
+    position:relative;
+  }
+  .understand::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:6px;
+    background:linear-gradient(90deg, var(--orange), var(--green));
+  }
+  .quote-card{
+    margin-top:40px;
+    background:linear-gradient(135deg, #0F1B2D, #1B2C42);
+    color:#fff;
+    border-radius:16px;
+    padding:44px;
+    position:relative;
+    overflow:hidden;
+  }
+  .quote-card::after{
+    content:"”";
+    position:absolute;
+    right:20px; top:-30px;
+    font-size:200px;
+    font-family:'Space Grotesk';
+    color:rgba(255,255,255,0.05);
+  }
+  .quote-card p{
+    font-size:18px;
+    font-weight:500;
+    max-width:640px;
+    position:relative;
+    z-index:1;
+  }
+  .quote-card p + p{ margin-top:16px; color:rgba(255,255,255,0.7); font-size:14px; font-weight:400;}
+
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:32px;
+  }
+  .fact{
+    background:var(--bg);
+    border:1px solid #E3E8EE;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+  }
+  .fact .num{
+    font-size:26px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  .fact .lab{
+    font-size:12px;
+    color:#6B7A8A;
+    margin-top:4px;
+  }
+  @media(max-width:700px){
+    .facts{ grid-template-columns:1fr;}
+    .quote-card{ padding:28px;}
+  }
+
+  /* ===== VALUE CARDS ===== */
+  .value{ background:var(--bg); }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-top:44px;
+  }
+  .vcard{
+    background:var(--paper);
+    border-radius:16px;
+    padding:32px 26px;
+    border:1px solid #E7EBEF;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .vcard:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(15,27,45,0.1);
+  }
+  .vcard .vnum{
+    font-family:'Space Grotesk';
+    font-size:13px;
+    font-weight:700;
+    color:var(--orange);
+    letter-spacing:0.1em;
+    margin-bottom:14px;
+    display:block;
+  }
+  .vcard h3{
+    font-size:18px;
+    color:var(--navy);
+    margin-bottom:10px;
+    font-weight:700;
+  }
+  .vcard p{
+    font-size:14px;
+    color:#5A6A7A;
+  }
+  .vcard.wide{ grid-column:span 1; }
+  @media(max-width:900px){
+    .value-grid{ grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:600px){
+    .value-grid{ grid-template-columns:1fr;}
+  }
+
+  /* ===== TIMELINE ===== */
+  .flow{
+    background:linear-gradient(180deg, var(--navy) 0%, #0c1622 100%);
+    color:#fff;
+  }
+  .flow .eyebrow{ color:var(--green); }
+  .flow .sec-title{ color:#fff; }
+  .flow .sec-desc{ color:rgba(255,255,255,0.65); }
+
+  .timeline{
+    margin-top:50px;
+    position:relative;
+    padding-left:30px;
+    border-left:2px dashed rgba(255,255,255,0.2);
+  }
+  .tstep{
+    position:relative;
+    padding-bottom:44px;
+  }
+  .tstep:last-child{ padding-bottom:0; }
+  .tstep::before{
+    content:"";
+    position:absolute;
+    left:-38px; top:2px;
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--orange);
+    box-shadow:0 0 0 6px rgba(255,107,53,0.15);
+  }
+  .tstep:nth-child(even)::before{
+    background:var(--green);
+    box-shadow:0 0 0 6px rgba(0,200,150,0.15);
+  }
+  .ttime{
+    font-family:'Space Grotesk';
+    font-size:13px;
+    color:var(--orange);
+    letter-spacing:0.08em;
+    margin-bottom:6px;
+  }
+  .tstep:nth-child(even) .ttime{ color:var(--green); }
+  .tstep h4{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .tstep p{
+    font-size:14px;
+    color:rgba(255,255,255,0.65);
+    max-width:520px;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:var(--paper);
+    text-align:center;
+  }
+  .closing .sec-title{ margin-bottom:14px; }
+  .closing .sec-desc{ margin:0 auto 36px; }
+  .cta-box{
+    display:inline-flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-block;
+    padding:16px 34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    letter-spacing:0.03em;
+    transition:transform .2s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--orange), #ff8a5c);
+    color:#fff;
+    box-shadow:0 14px 30px rgba(255,107,53,0.35);
+  }
+  .btn-outline{
+    border:2px solid var(--navy);
+    color:var(--navy);
+  }
+  .answers{
+    margin-top:56px;
+    text-align:left;
+    background:var(--bg);
+    border-radius:16px;
+    padding:32px;
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid #E3E8EE;
+  }
+  .answers h3{
+    font-size:15px;
+    color:var(--navy);
+    margin-bottom:16px;
+    letter-spacing:0.05em;
+  }
+  .answers ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 24px;
+    font-size:13.5px;
+    color:#4B5A6A;
+  }
+  .answers li b{ color:var(--navy); }
+  @media(max-width:640px){
+    .answers ul{ grid-template-columns:1fr; }
+  }
+
+  footer{
+    background:var(--navy);
+    color:rgba(255,255,255,0.55);
+    text-align:center;
+    padding:28px 0;
+    font-size:12px;
+    letter-spacing:0.05em;
+  }
+  footer b{ color:#fff; }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">KAIROS FROM PROPOSAL — 本日対応可能</span>
+      <h1>そのデザイン、<br><span>今日、</span>世界に公開します。</h1>
+      <p class="lead">
+        すでに完成しているLPデザイン。あとは正確に、速く、Webに落とし込むだけ。
+        私たちはその「実装の最後の一歩」を、本日中に仕上げるご提案をいたします。
+      </p>
+      <p class="from">PROPOSAL FROM <b>Kairos</b> — Web制作・システム開発チーム</p>
+    </div>
+    <div class="clock-box">
+      <div class="clock">
+        <div class="hand hour"></div>
+        <div class="hand min"></div>
+        <div class="pin"></div>
+        <div class="clock-label">本日公開へ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UNDERSTANDING ===== -->
+<section class="understand">
+  <div class="wrap">
+    <span class="eyebrow">UNDERSTANDING THE PROJECT</span>
+    <h2 class="sec-title">「ゼロから作る」ではなく、<br>「完成形を、正確に形にする」仕事だと理解しています。</h2>
+    <p class="sec-desc">
+      今回ご依頼いただいているのは、デザインの意思決定ではありません。
+      すでに固まったデザインカンプ・素材・文章・リンク先がある中で、
+      それをそのままの品質でWeb上に再現し、明日には公開する——スピードと正確さの両立が求められる作業です。
+    </p>
+
+    <div class="quote-card">
+      <p>「完成イメージ通りに、今日中に形にしてほしい」</p>
+      <p>そのご要望に対して私たちがお約束するのは、デザインの再現度を落とさず、かつ最速で公開まで到達するための実装体制です。</p>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="num">0→100</div>
+        <div class="lab">デザイン設計ではなく、実装・公開に特化</div>
+      </div>
+      <div class="fact">
+        <div class="num">本日〜明日</div>
+        <div class="lab">着手から公開までのスピード対応</div>
+      </div>
+      <div class="fact">
+        <div class="num">SP／PC</div>
+        <div class="lab">両表示の崩れないコーディング</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUE ===== -->
+<section class="value">
+  <div class="wrap">
+    <span class="eyebrow">WHAT KAIROS PROVIDES</span>
+    <h2 class="sec-title">Kairosがご提供できる価値</h2>
+    <p class="sec-desc">デザインの再現力と実装スピード、そして公開後まで見据えた対応力。5つの観点でお応えします。</p>
+
+    <div class="value-grid">
+      <div class="vcard">
+        <span class="vnum">01</span>
+        <h3>即日着手・即日実装体制</h3>
+        <p>ご連絡いただき次第、すぐに着手可能。本日中の実装、明日中の公開に対応できるスケジュールを組みます。</p>
+      </div>
+      <div class="vcard">
+        <span class="vnum">02</span>
+        <h3>デザインの精密な再現力</h3>
+        <p>余白・文字サイズ・行間まで、支給いただいたデザインカンプに忠実に。見た目のズレを最小限に仕上げます。</p>
+      </div>
+      <div class="vcard">
+        <span class="vnum">03</span>
+        <h3>スマホ最適化とPC崩れ防止</h3>
+        <p>スマートフォン表示を基準にしつつ、PCで開いた際にも大きく崩れないようレイアウトを調整します。</p>
+      </div>
+      <div class="vcard">
+        <span class="vnum">04</span>
+        <h3>公開までワンストップ対応</h3>
+        <p>画像・テキストの反映、ボタンやLINEリンクの設定、サーバーへのアップロードまで一貫して対応します。</p>
+      </div>
+      <div class="vcard">
+        <span class="vnum">05</span>
+        <h3>公開後も伴走するサポート</h3>
+        <p>公開後の表示確認・軽微な修正も対応。今後のLP制作・サイト修正まで、継続してお付き合いできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOW / TIMELINE ===== -->
+<section class="flow">
+  <div class="wrap">
+    <span class="eyebrow">TODAY'S FLOW</span>
+    <h2 class="sec-title">本日〜明日公開までの進め方</h2>
+    <p class="sec-desc">ご発注後、以下のような流れで進行します。進捗はこまめに共有いたします。</p>
+
+    <div class="timeline">
+      <div class="tstep">
+        <div class="ttime">STEP 01 ・ ご発注直後</div>
+        <h4>素材受領・要件確認</h4>
+        <p>デザイン画像、使用素材、テキスト、リンク先URL、サーバー情報をお預かりし、実装方針をすり合わせます。</p>
+      </div>
+      <div class="tstep">
+        <div class="ttime">STEP 02 ・ 本日中</div>
+        <h4>コーディング・実装</h4>
+        <p>デザインカンプをもとにマークアップ。各セクションの構造とスタイルを組み上げます。</p>
+      </div>
+      <div class="tstep">
+        <div class="ttime">STEP 03 ・ 本日中</div>
+        <h4>画像・テキスト反映／SP最適化</h4>
+        <p>支給素材を反映し、スマートフォン表示を中心に細部の余白・文字サイズを調整します。</p>
+      </div>
+      <div class="tstep">
+        <div class="ttime">STEP 04 ・ 本日〜明日</div>
+        <h4>リンク設定・PC表示調整</h4>
+        <p>LINEなど各ボタンのリンクを設定。PC表示でも大きく崩れないよう最終チェックを行います。</p>
+      </div>
+      <div class="tstep">
+        <div class="ttime">STEP 05 ・ 公開</div>
+        <h4>アップロード・公開・確認</h4>
+        <p>サーバーまたは既存環境へアップロードし、公開後の表示確認と軽微な修正まで対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <div class="wrap">
+    <span class="eyebrow">NEXT ACTION</span>
+    <h2 class="sec-title">まずは今すぐ、状況を共有させてください。</h2>
+    <p class="sec-desc">
+      スピード感を持って、柔軟に対応いたします。本日対応可能な時間帯・見込み時間・実装方法を含め、すぐにご連絡差し上げます。
+    </p>
+
+    <div class="cta-box">
+      <a href="#" class="btn btn-primary">Kairosに本日中の対応を依頼する</a>
+      <a href="#" class="btn btn-outline">実績・詳細を確認したい</a>
+    </div>
+
+    <div class="answers">
+      <h3>ご応募時の確認事項に、あらかじめお答えします</h3>
+      <ul>
+        <li>① 実績URL：<b>LPコーディング実績あり／ご提示可能</b></li>
+        <li>② 本日対応可能時間：<b>ご連絡後、即日着手</b></li>
+        <li>③ 公開までの見込み時間：<b>着手から最短当日〜翌日中</b></li>
+        <li>④ 希望金額：<b>ご予算 5,000〜10,000円の範囲で対応</b></li>
+        <li>⑤ 実装方法：<b>HTML／CSS（レスポンシブ）中心の軽量実装</b></li>
+        <li>⑥ サーバーアップロード：<b>既存環境への公開まで対応可能</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Kairos</b> — Web制作・システム開発チーム ｜ 本提案はまつれん様の募集内容に基づき作成しています
+</footer>
+
+</body>
+</html>
